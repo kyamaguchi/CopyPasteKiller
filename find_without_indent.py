@@ -1,5 +1,6 @@
 import sublime
 import sublime_plugin
+import re
 
 
 class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
@@ -12,7 +13,19 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
         if len(selection) == 0:
             # Select the line on no selection
             selection = view.substr(view.line(view.sel()[0]))
-        self._open_tab_with_find_string(selection)
+
+        find_string = self._convert_for_find(selection)
+        self._open_tab_with_find_string(find_string)
+
+    def _convert_for_find(self, string):
+        lines = []
+        for line in string.split("\n"):
+            if len(line) == 0:
+                continue
+            # Replace leading spaces(indent) with that of regex
+            result = re.escape(re.sub(r'^\s+', "", line))
+            lines.append("^\s+" + result)
+        return "\n".join(lines)
 
     def _open_tab_with_find_string(self, selection):
         v = self.window.new_file()
