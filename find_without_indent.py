@@ -17,6 +17,15 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
         find_string = self._convert_for_find(selection)
         self._open_tab_with_find_string(find_string)
 
+        self.window.run_command("select_all")
+        self.window.run_command('slurp_find_string')
+        panel_args = {
+            "panel": "find_in_files",
+            "regex": True,
+            "case_sensitive": True
+        }
+        self.window.run_command("show_panel", panel_args)
+
     def _convert_for_find(self, string):
         lines = []
         for line in string.split("\n"):
