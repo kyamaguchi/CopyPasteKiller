@@ -29,8 +29,6 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
     def _convert_for_find(self, string):
         lines = []
         for line in string.split("\n"):
-            if len(line) == 0:
-                continue
             # Replace leading spaces(indent) with that of regex
             result = re.escape(re.sub(r'^\s+', "", line))
             # Revert quots to fix "Find"
