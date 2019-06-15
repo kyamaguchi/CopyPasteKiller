@@ -33,6 +33,9 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
                 continue
             # Replace leading spaces(indent) with that of regex
             result = re.escape(re.sub(r'^\s+', "", line))
+            # Revert quots to fix "Find"
+            result = re.sub(r"\\'", "'", result)
+            result = re.sub(r'\\"', '"', result)
             lines.append(result)
         find_string = "\n".join(["^[ \\t]*" + l for l in lines])
         return find_string
