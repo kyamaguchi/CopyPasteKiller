@@ -14,11 +14,16 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
             # Select the line on no selection
             selection = view.substr(view.line(view.sel()[0]))
 
-        find_string = self._convert_for_find(selection)
+        find_string, replace_string = self._convert_for_find_and_replace(selection)
         self._open_tab_with_find_string(find_string)
 
-        self.window.run_command("select_all")
+        self.window.run_command('select_all')
         self.window.run_command('slurp_find_string')
+
+        self._open_tab_with_find_string(replace_string)
+
+        self.window.run_command('select_all')
+        self.window.run_command('slurp_replace_string')
         panel_args = {
             "panel": "find_in_files",
             "regex": True,
@@ -26,7 +31,7 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
         }
         self.window.run_command("show_panel", panel_args)
 
-    def _convert_for_find(self, string):
+    def _convert_for_find_and_replace(self, string):
         lines = []
         for line in string.split("\n"):
             # Replace leading spaces(indent) with that of regex
@@ -35,8 +40,9 @@ class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
             result = re.sub(r"\\'", "'", result)
             result = re.sub(r'\\"', '"', result)
             lines.append(result)
-        find_string = "\n".join(["^[ \\t]*" + l for l in lines])
-        return find_string
+        find_string = "\n".join(["^([ \\t]*)" + l for l in lines])
+        replace_string = "\n".join(["${}".format(i+1) + l for i, l in enumerate(lines)])
+        return [find_string, replace_string]
 
     def _open_tab_with_find_string(self, selection):
         v = self.window.new_file()
