@@ -3,8 +3,8 @@ import sublime_plugin
 import re
 
 
-class FindWithoutIndentCommand(sublime_plugin.WindowCommand):
-    """FindWithoutIndentCommand Plugin."""
+class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
+    """CopyPasteKillerCommand Plugin."""
 
     def run(self):
         window = sublime.active_window()
