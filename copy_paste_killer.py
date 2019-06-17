@@ -32,16 +32,20 @@ class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
         self.window.run_command("show_panel", panel_args)
 
     def _convert_for_find_and_replace(self, string):
-        lines = []
+        find_lines = []
         for line in string.split("\n"):
-            # Replace leading spaces(indent) with that of regex
             result = re.escape(re.sub(r'^\s+', "", line))
-            # Revert quots to fix "Find"
+            # Revert quotes to fix "Find"
             result = re.sub(r"\\'", "'", result)
             result = re.sub(r'\\"', '"', result)
-            lines.append(result)
-        find_string = "\n".join(["^([ \\t]*)" + l for l in lines])
-        replace_string = "\n".join(["${}".format(i+1) + l for i, l in enumerate(lines)])
+            find_lines.append(result)
+        find_string = "\n".join(["^([ \\t]*)" + l for l in find_lines])
+
+        replace_lines = []
+        for line in string.split("\n"):
+            result = re.sub(r'^\s+', "", line)
+            replace_lines.append(result)
+        replace_string = "\n".join(["${}".format(i+1) + l for i, l in enumerate(replace_lines)])
         return [find_string, replace_string]
 
     def _open_tab_with_find_string(self, selection):
