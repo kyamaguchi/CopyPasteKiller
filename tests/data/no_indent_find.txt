@@ -1,0 +1,4 @@
+^([ \t]*)\#\ frozen_string_literal\:\ true
+^([ \t]*)
+^([ \t]*)module\ ActionController
+^([ \t]*)

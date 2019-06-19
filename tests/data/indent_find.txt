@@ -1,0 +1,5 @@
+^([ \t]*)get\ \:display
+^([ \t]*)
+^([ \t]*)assert_response\ \:success
+^([ \t]*)assert_equal\ "Definitely\ Maybe"\,\ \@response\.body
+^([ \t]*)
