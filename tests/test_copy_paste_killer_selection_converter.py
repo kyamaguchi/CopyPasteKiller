@@ -1,5 +1,7 @@
 import sublime
-import sys, os
+import sys
+import os
+import glob
 from unittest import TestCase
 
 PROJECT_ROOT = os.path.dirname(__file__)
@@ -10,17 +12,11 @@ from copy_paste_killer_selection_converter import CopyPasteKillerSelectionConver
 
 class TestCopyPasteKillerSelectionConverter(TestCase):
 
-    def test_indent(self):
-        self._run_test_with_scenario('indent')
-
-    def test_no_indent(self):
-        self._run_test_with_scenario('no_indent')
-
-    def test_single_line(self):
-        self._run_test_with_scenario('single_line')
-
-    def test_tab_indent(self):
-        self._run_test_with_scenario('tab_indent')
+    def test_scenarios(self):
+        files = glob.glob(os.path.join(self._data_dir(), '*_source.txt'))
+        for filepath in files:
+            scenario = os.path.basename(filepath).replace('_source.txt', '')
+            self._run_test_with_scenario(scenario)
 
     def _run_test_with_scenario(self, scenario):
         with open(os.path.join(self._data_dir(), "{}_source.txt".format(scenario)), "r") as file:
