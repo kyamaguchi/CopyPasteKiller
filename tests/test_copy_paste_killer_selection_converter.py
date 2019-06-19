@@ -29,8 +29,8 @@ class TestCopyPasteKillerSelectionConverter(TestCase):
         find_string = CopyPasteKillerSelectionConverter.convert_for_find(selection)
         replace_string = CopyPasteKillerSelectionConverter.convert_for_replace(selection)
 
-        self.assertEqual(find_string, expected_find_string)
-        self.assertEqual(replace_string, expected_replace_string)
+        self.assertEqual(find_string, expected_find_string, msg='\nFailed with the scenario [{0}]'.format(scenario))
+        self.assertEqual(replace_string, expected_replace_string, msg='\nFailed with the scenario [{0}]'.format(scenario))
 
     def _data_dir(self):
         base_path = os.path.dirname(os.path.realpath(__file__))
