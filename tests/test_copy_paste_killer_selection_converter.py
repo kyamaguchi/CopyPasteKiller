@@ -25,7 +25,10 @@ class TestCopyPasteKillerSelectionConverter(TestCase):
             expected_find_string = file.read()
         with open(os.path.join(self._data_dir(), "{}_replace.txt".format(scenario)), "r") as file:
             expected_replace_string = file.read()
-        find_string, replace_string = CopyPasteKillerSelectionConverter.convert_for_find_and_replace(selection)
+
+        find_string = CopyPasteKillerSelectionConverter.convert_for_find(selection)
+        replace_string = CopyPasteKillerSelectionConverter.convert_for_replace(selection)
+
         self.assertEqual(find_string, expected_find_string)
         self.assertEqual(replace_string, expected_replace_string)
 

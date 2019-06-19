@@ -14,12 +14,13 @@ class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
             # Select the line on no selection
             selection = view.substr(view.line(view.sel()[0]))
 
-        find_string, replace_string = CopyPasteKillerSelectionConverter.convert_for_find_and_replace(selection)
+        find_string = CopyPasteKillerSelectionConverter.convert_for_find(selection)
         self._open_tab_with_find_string(find_string)
 
         self.window.run_command('select_all')
         self.window.run_command('slurp_find_string')
 
+        replace_string = CopyPasteKillerSelectionConverter.convert_for_replace(selection)
         self._open_tab_with_find_string(replace_string)
 
         self.window.run_command('select_all')
