@@ -23,7 +23,7 @@ class TestCopyPasteKillerSelectionConverter(TestCase):
         self._run_test_with_scenario('tab_indent')
 
     def _run_test_with_scenario(self, scenario):
-        with open(os.path.join(self._data_dir(), "{}.txt".format(scenario)), "r") as file:
+        with open(os.path.join(self._data_dir(), "{}_source.txt".format(scenario)), "r") as file:
             selection = file.read()
         with open(os.path.join(self._data_dir(), "{}_find.txt".format(scenario)), "r") as file:
             expected_find_string = file.read()
