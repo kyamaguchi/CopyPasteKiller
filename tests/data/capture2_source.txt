@@ -1,0 +1,5 @@
+\1get :display
+\2
+\3assert_response :success
+\4assert_equal "Definitely Maybe", @response.body
+\5

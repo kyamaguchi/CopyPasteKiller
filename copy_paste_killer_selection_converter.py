@@ -23,5 +23,6 @@ class CopyPasteKillerSelectionConverter:
         for line in string.split("\n"):
             result = re.sub(r'^\s+', "", line)
             result = result.replace('\\', '\\\\')
+            result = result.replace('$', '\\$')
             lines.append(result)
         return "\n".join(["${}".format(i+1) + l for i, l in enumerate(lines)])
