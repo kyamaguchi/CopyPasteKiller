@@ -28,7 +28,8 @@ class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
         panel_args = {
             "panel": "find_in_files",
             "regex": True,
-            "case_sensitive": True
+            "case_sensitive": True,
+            "whole_word": False
         }
         self.window.run_command("show_panel", panel_args)
 
