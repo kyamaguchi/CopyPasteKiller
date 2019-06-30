@@ -15,6 +15,44 @@ You can declare shortcut like:
 { "keys": ["ctrl+shift+i"], "command": "copy_paste_killer" }
 ```
 
+### Guide
+
+#### Select lines
+
+<img width="640" alt="01_select_lines" src="https://user-images.githubusercontent.com/275284/60395570-6387d700-9b70-11e9-9212-629087c24fa7.png">
+
+#### Run "copy_paste_killer" command
+
+The snippets for "Find" and "Replace" are set
+
+<img width="640" alt="02_run_copy_paste_killer" src="https://user-images.githubusercontent.com/275284/60395590-b06bad80-9b70-11e9-8cef-ead5880e8627.png">
+
+#### Hit "Find" and confirm matches
+
+You can find duplicated codes even if they have different indents
+
+<img width="640" alt="03_find_with_snippet" src="https://user-images.githubusercontent.com/275284/60395613-02acce80-9b71-11e9-9616-dba3e76431ae.png">
+
+#### Change the snippet for "Replace"
+
+Change the snippet for "Replace"
+
+You can change it in the Panel and "Select All ⌘A" -> "Use Selection for Replace ⇧⌘E"
+
+<img width="640" alt="04_edit_replace_string" src="https://user-images.githubusercontent.com/275284/60395616-1f490680-9b71-11e9-810f-d3ce6978e3a3.png">
+
+#### Hit "Replace" and confirm changes
+
+<img width="640" alt="05_replace_matches" src="https://user-images.githubusercontent.com/275284/60395621-34259a00-9b71-11e9-82f6-c06af4b081bf.png">
+
+#### Check changes
+
+Check changes with `git diff`
+
+Reset changes with `git checkout` etc if replacements are wrong
+
+<img width="640" alt="06_git_diff" src="https://user-images.githubusercontent.com/275284/60395629-4b648780-9b71-11e9-8462-ad6a10eee17d.png">
+
 ## Test
 
 Use [UnitTesting plugin](https://github.com/SublimeText/UnitTesting)
