@@ -55,4 +55,20 @@ Reset changes with `git checkout` etc if replacements are wrong
 
 ## Test
 
+### UnitTesting plugin
+
 Use [UnitTesting plugin](https://github.com/SublimeText/UnitTesting)
+
+- Open _tests/test_copy_paste_killer_selection_converter.py_
+- Open "Command Palette..." (⇧⌘P)
+- Run "UnitTesting: Test Current File"
+
+#### Test scenarios
+
+- "tests/data/*_source.txt" -> Expected snippet for selection
+- "tests/data/*_find.txt" -> Expected snippet for find_string
+- "tests/data/*_replace.txt" -> Expected snippet for replace_string
+
+### Manual testing
+
+Any selection shouldn't change with "copy_paste_killer" command and "Find" and "Replace" when replace_string isn't changed.
