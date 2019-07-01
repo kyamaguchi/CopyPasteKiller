@@ -1,4 +1,4 @@
-$1# frozen_string_literal: true
-$2
-$3module ActionController
-$4
+$+{i1}# frozen_string_literal: true
+$+{i2}
+$+{i3}module ActionController
+$+{i4}

@@ -1,4 +1,4 @@
-^([ \t]*)\#\ frozen_string_literal\:\ true
-^([ \t]*)
-^([ \t]*)module\ ActionController
-^([ \t]*)
+^(?<i1>[ \t]*)\#\ frozen_string_literal\:\ true
+^(?<i2>[ \t]*)
+^(?<i3>[ \t]*)module\ ActionController
+^(?<i4>[ \t]*)

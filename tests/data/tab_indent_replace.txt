@@ -1,5 +1,5 @@
-$1get :display
-$2
-$3assert_response :success
-$4assert_equal "Definitely Maybe", @response.body
-$5
+$+{i1}get :display
+$+{i2}
+$+{i3}assert_response :success
+$+{i4}assert_equal "Definitely Maybe", @response.body
+$+{i5}
