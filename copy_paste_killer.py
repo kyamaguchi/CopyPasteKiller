@@ -7,6 +7,7 @@ class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
     """CopyPasteKillerCommand Plugin."""
 
     def run(self):
+        settings = sublime.load_settings("CopyPasteKiller.sublime-settings")
         window = sublime.active_window()
         view = window.active_view()
         selection = view.substr(view.sel()[0])
@@ -15,16 +16,21 @@ class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
             selection = view.substr(view.line(view.sel()[0]))
 
         find_string = CopyPasteKillerSelectionConverter.convert_for_find(selection)
-        self._open_tab_with_find_string(find_string, "CopyPasteKiller (Find)")
+        find_view = self._open_tab_with_find_string(find_string, "CopyPasteKiller (Find)")
 
         self.window.run_command('select_all')
         self.window.run_command('slurp_find_string')
 
         replace_string = CopyPasteKillerSelectionConverter.convert_for_replace(selection)
-        self._open_tab_with_find_string(replace_string, "CopyPasteKiller (Replace)")
+        replace_view = self._open_tab_with_find_string(replace_string, "CopyPasteKiller (Replace)")
 
         self.window.run_command('select_all')
         self.window.run_command('slurp_replace_string')
+
+        if not settings.get("keep_panels_open", True):
+            find_view.close()
+            replace_view.close()
+
         panel_args = {
             "panel": "find_in_files",
             "regex": True,
@@ -39,3 +45,4 @@ class CopyPasteKillerCommand(sublime_plugin.WindowCommand):
         v.set_scratch(True)
         v.assign_syntax('Packages/Regular Expressions/RegExp.sublime-syntax')
         v.run_command('append', {'characters': selection})
+        return v
