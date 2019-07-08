@@ -15,7 +15,7 @@ class CopyPasteKillerSelectionConverter:
             result = re.sub(r'\\>', '>', result)
             result = re.sub(r'\\`', '`', result)
             lines.append(result)
-        return "\n".join(["^([ \\t]*)" + l for l in lines])
+        return "\n".join(["^(?<i{}>[ \\t]*)".format(i+1) + l for i, l in enumerate(lines)])
 
     @classmethod
     def convert_for_replace(cls, string):
@@ -25,4 +25,4 @@ class CopyPasteKillerSelectionConverter:
             result = result.replace('\\', '\\\\')
             result = result.replace('$', '\\$')
             lines.append(result)
-        return "\n".join(["${}".format(i+1) + l for i, l in enumerate(lines)])
+        return "\n".join(["$+{{i{}}}".format(i+1) + l for i, l in enumerate(lines)])

@@ -1,5 +1,5 @@
-^([ \t]*)\\1get\ \:display
-^([ \t]*)\\2
-^([ \t]*)\\3assert_response\ \:success
-^([ \t]*)\\4assert_equal\ "Definitely\ Maybe"\,\ \@response\.body
-^([ \t]*)\\5
+^(?<i1>[ \t]*)\\1get\ \:display
+^(?<i2>[ \t]*)\\2
+^(?<i3>[ \t]*)\\3assert_response\ \:success
+^(?<i4>[ \t]*)\\4assert_equal\ "Definitely\ Maybe"\,\ \@response\.body
+^(?<i5>[ \t]*)\\5
