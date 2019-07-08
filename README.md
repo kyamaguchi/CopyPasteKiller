@@ -2,8 +2,9 @@
 
 Sublime text 3 plugin to help to refactor duplicated code.
 
-This commands set snippets for "Find and Replace" with regular expression.
-You can find any code blocks without caring about indentation.
+This command sets snippets for "Find and Replace" with regular expression.  
+You can find any code blocks without caring about indentation
+and some differences like variable names.  
 You can replace those matches with refactored code
 by changing the given 'replace_string' and hitting "Replace".
 
@@ -73,7 +74,7 @@ Hit "Replace" and confirm if changes are expected
 
 Check changes with `git diff`
 
-Reset changes with `git checkout` etc if replacements were wrong
+Reset(Undo) changes with `git checkout` etc if replacements were wrong
 
 <img width="640" alt="08_git_diff" src="https://user-images.githubusercontent.com/275284/60691635-245cdb80-9f0c-11e9-8eda-9441ae477767.png">
 
