@@ -1,0 +1,32 @@
+[
+  {
+    "caption": "Preferences",
+    "mnemonic": "n",
+    "id": "preferences",
+    "children":
+    [
+      {
+        "caption": "Package Settings",
+        "mnemonic": "P",
+        "id": "package-settings",
+        "children":
+        [
+          {
+            "caption": "CopyPasteKiller",
+            "children":
+            [
+              {
+                "command": "edit_settings",
+                "args": {
+                  "base_file": "${packages}/CopyPasteKiller/CopyPasteKiller.sublime-settings",
+                  "default": "// Settings in here override those in \"CopyPasteKiller/CopyPasteKiller.sublime-settings\",\n\n{\n\t$0\n}\n"
+                },
+                "caption": "Settings"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
