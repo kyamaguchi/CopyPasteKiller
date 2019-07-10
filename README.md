@@ -28,6 +28,8 @@ You can declare shortcut like:
 
 The snippets for "Find" and "Replace" are set
 
+You could configure whether to open panels or not with settings `keep_panels_open`
+
 <img width="640" alt="02_run_copy_paste_killer" src="https://user-images.githubusercontent.com/275284/60691564-9123a600-9f0b-11e9-8457-b3fe2c804208.png">
 
 #### Change the snippet for "Find"
@@ -77,6 +79,10 @@ Check changes with `git diff`
 Reset(Undo) changes with `git checkout` etc if replacements were wrong
 
 <img width="640" alt="08_git_diff" src="https://user-images.githubusercontent.com/275284/60691635-245cdb80-9f0c-11e9-8eda-9441ae477767.png">
+
+## Settings
+
+`keep_panels_open` (default true) - Configure whether to open panels for snippets or not
 
 ## Test
 
