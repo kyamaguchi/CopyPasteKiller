@@ -16,13 +16,13 @@ class CopyPasteKillerCommand(sublime_plugin.TextCommand):
             selection = view.substr(view.line(view.sel()[0]))
 
         find_string = CopyPasteKillerSelectionConverter.convert_for_find(selection)
-        find_view = self._open_tab_with_find_string(find_string, "CopyPasteKiller (Find)")
+        find_view = self._open_tab_with_snippet(find_string, "CopyPasteKiller (Find)")
 
         window.run_command('select_all')
         window.run_command('slurp_find_string')
 
         replace_string = CopyPasteKillerSelectionConverter.convert_for_replace(selection)
-        replace_view = self._open_tab_with_find_string(replace_string, "CopyPasteKiller (Replace)")
+        replace_view = self._open_tab_with_snippet(replace_string, "CopyPasteKiller (Replace)")
 
         window.run_command('select_all')
         window.run_command('slurp_replace_string')
@@ -39,7 +39,7 @@ class CopyPasteKillerCommand(sublime_plugin.TextCommand):
         }
         window.run_command("show_panel", panel_args)
 
-    def _open_tab_with_find_string(self, selection, name):
+    def _open_tab_with_snippet(self, selection, name):
         v = self.view.window().new_file()
         v.set_name(name)
         v.set_scratch(True)
